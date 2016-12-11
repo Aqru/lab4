@@ -17,18 +17,30 @@ public class Bowling {
 	
 	public void roll(int pins) {
 		rollsArr[rolli++] = pins;
+		if(pins == PINSOVER && (rolli - 1) %2 == 0)
+			rollsArr[rolli++] = 0;
 	}
 	
 	public boolean isSpare(int i) {
 		return rollsArr[i] + rollsArr[i + 1] == PINSOVER;
 	}
 	
+	public boolean isStrike(int i) {
+		return rollsArr[i] == PINSOVER || rollsArr[i + 1] == PINSOVER;
+	}
+	
+	public int addWrapper(int i) {
+		return rollsArr[i] + rollsArr[i + 1];
+	}
 
 	public int getScore() {
 		int result = 0;
 		for(int i = 0; i < rolli; i+=2) {
-			result += (rollsArr[i] + rollsArr[i + 1]);
-			if(isSpare(i) && i < LASTFRAME) {
+			result += addWrapper(i);
+			if(isStrike(i)) {
+				result += addWrapper(i + 2);
+			}
+			else if(isSpare(i) && i < LASTFRAME) {
 				result += rollsArr[i + 2];
 			}
 		}
