@@ -38,5 +38,17 @@ public class BowlingTest {
 		
 		assertEquals(42, bowlObj.getScore());
 	}
+	
+	@Test
+	public void tenthFrameTest() {
+		for(int i = 0; i < bowlObj.ROLLCOUNT - 2; i++)
+			bowlObj.roll(1);
+		bowlObj.roll(10);
+		bowlObj.roll(1);
+		
+		assertEquals(29, bowlObj.getScore());
+	}
+	
+	
 
 }
