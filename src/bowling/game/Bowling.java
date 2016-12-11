@@ -32,12 +32,20 @@ public class Bowling {
 	public int addWrapper(int i) {
 		return rollsArr[i] + rollsArr[i + 1];
 	}
+	
 
 	public int getScore() {
 		int result = 0;
 		for(int i = 0; i < rolli; i+=2) {
+			//if tenth frame
+			if(i == ROLLCOUNT && (isStrike(i)|| isSpare(i))) {
+				for(int j = i; j < rolli; j++)
+					result += rollsArr[j];
+				break;
+			}
+			
 			result += addWrapper(i);
-			if(isStrike(i)) {
+			if(isStrike(i) && i < LASTFRAME) {
 				result += addWrapper(i + 2);
 			}
 			else if(isSpare(i) && i < LASTFRAME) {
