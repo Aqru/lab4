@@ -23,6 +23,7 @@ public class Bowling {
 		return rollsArr[i] + rollsArr[i + 1] == PINSOVER;
 	}
 	
+
 	public int getScore() {
 		int result = 0;
 		for(int i = 0; i < rolli; i+=2) {

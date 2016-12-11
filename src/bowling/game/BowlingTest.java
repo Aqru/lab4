@@ -17,12 +17,26 @@ public class BowlingTest {
 		assertEquals(20, bowlObj.getScore());
 	}
 	
+	@Test
 	public void spareTest() {
 		bowlObj.roll(5);
 		bowlObj.roll(5);
 		for(int i = 0; i < bowlObj.ROLLCOUNT - 2; i++)
-			bowlObj.roll(29);
+			bowlObj.roll(1);
 		
+		assertEquals(29, bowlObj.getScore());
+		
+	}
+	
+	@Test
+	public void strikeTest() {
+		bowlObj.roll(10);
+		bowlObj.roll(4);
+		bowlObj.roll(4);
+		for(int i = 0; i < bowlObj.ROLLCOUNT - 4; i++)
+			bowlObj.roll(1);
+		
+		assertEquals(42, bowlObj.getScore());
 	}
 
 }
