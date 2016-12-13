@@ -10,7 +10,7 @@ public class Bowling {
     private int pinDown; // used for calc spare.
 
     private int strikeBonusScore; // used for calc score after strike.
-    //private int spareBonusScore; // used for calc score after spare.
+    private int spareBonusScore; // used for calc score after spare.
 
     /***
      * Checking strike condition.
@@ -20,6 +20,14 @@ public class Bowling {
     public boolean strikeCheck(int pins) {
         if (pins == 10){
             strikeBonusScore+=2;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean spareCheck(int pins) {
+        if (pins+pinDown == 10){
+            spareBonusScore+=1;
             return true;
         }
         return false;
@@ -35,9 +43,10 @@ public class Bowling {
             strikeBonusScore--;
             score+=pins;
         }
-//        if (spareBonusScore > 0) {
-//            score += pins;
-//        }
+        if (spareBonusScore > 0) {
+            spareBonusScore--;
+            score += pins;
+        }
         if (frameStart) {
             if (!strikeCheck(pins)) {
                 frameStart = false;
@@ -45,6 +54,7 @@ public class Bowling {
             }
         }
         else {
+            spareCheck(pins);
             frameStart = true;
         }
     }
