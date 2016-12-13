@@ -38,4 +38,36 @@ public class BowlingTest {
         bowling.roll(3);
         Assert.assertEquals("wrong score after spare", 17, bowling.getScore());
     }
+
+    @Test
+    public void testSimpleBowlingGameWithStrikeAndSpare() {
+        bowling.roll(10);
+
+        bowling.roll(10);
+
+        bowling.roll(3);
+        bowling.roll(5);
+
+        bowling.roll(5);
+        bowling.roll(5);
+
+        bowling.roll(4);
+        bowling.roll(4);
+
+        bowling.roll(4);
+        bowling.roll(4);
+
+        bowling.roll(4);
+        bowling.roll(4);
+
+        bowling.roll(4);
+        bowling.roll(4);
+
+        bowling.roll(4);
+        bowling.roll(4);
+
+        bowling.roll(10);
+        bowling.roll(7);
+        Assert.assertEquals("wrong score after simple game check", 135, bowling.getScore());
+    }
 }
