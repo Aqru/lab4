@@ -29,4 +29,13 @@ public class BowlingTest {
         bowling.roll(1);
         Assert.assertEquals("wrong score after strike", 14, bowling.getScore());
     }
+
+    @Test
+    public void testBowlingSimpleSpare() {
+        bowling.roll(4);
+        bowling.roll(6);
+        bowling.roll(2);
+        bowling.roll(3);
+        Assert.assertEquals("wrong score after spare", 17, bowling.getScore());
+    }
 }
